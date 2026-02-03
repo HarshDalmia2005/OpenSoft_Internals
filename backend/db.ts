@@ -1,6 +1,13 @@
 import postgres from 'postgres';
+import dotenv from 'dotenv';
 
-const connectionString = "postgresql://postgres.bgojfdawyydlkbzcxuey:whiteboard_opensoft1@aws-1-ap-southeast-2.pooler.supabase.com:6543/postgres";
+dotenv.config();
+
+const connectionString = process.env.DATABASE_URL;
+
+if (!connectionString) {
+  throw new Error('DATABASE_URL is not set in .env file');
+}
 
 // CRITICAL: Set prepare: false for Transaction Pooler (Port 6543)
 const sql = postgres(connectionString, {
