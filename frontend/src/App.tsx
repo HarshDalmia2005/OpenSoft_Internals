@@ -1,16 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// 1. Import your component
+import './App.css';
+import {AuthForm} from './components/AuthForm';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <p>hello</p>
-    </>
-  )
+    // 2. Render it inside the main div
+    <div className="app-shell">
+      <AuthForm/>
+    </div>
+  );
 }
 
-export default App
+export default App;
