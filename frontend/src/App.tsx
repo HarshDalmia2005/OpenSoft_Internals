@@ -1,3 +1,6 @@
+// test comment
+
+
 // 1. Import your component
 import './App.css';
 import {AuthForm} from './components/AuthForm';
