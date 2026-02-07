@@ -5,6 +5,7 @@ export interface Room {
   access_code?: string;
   is_public: boolean;
   max_participants: number;
+  canvas_snapshot?: Buffer;  // Yjs binary state
   created_at: Date;
   updated_at: Date;
 }
