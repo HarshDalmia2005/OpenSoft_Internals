@@ -12,9 +12,15 @@ export interface Room {
 
 export interface CreateRoomDTO {
   name: string;
-  owner_id: string;
-  access_code?: string;
   is_public?: boolean;
+  access_code?: string;
+  max_participants?: number;
+}
+
+export interface UpdateRoomDTO {
+  name?: string;
+  is_public?: boolean;
+  access_code?: string;
   max_participants?: number;
 }
 
@@ -23,4 +29,10 @@ export interface RoomParticipant {
   user_id: string;
   joined_at: Date;
   is_active: boolean;
+}
+
+export interface InviteLink {
+  room_id: string;
+  join_url: string;
+  access_code?: string;
 }
