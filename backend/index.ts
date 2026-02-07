@@ -1,7 +1,9 @@
+import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
 dotenv.config({ quiet: true });
-import express, { Request, Response } from 'express';
+
 import userRoutes from './routes/userRoutes';
+import roomRoutes from './routes/roomRoutes';
 import { authenticateToken } from './middleware/userMiddleware';
 
 const app = express();
@@ -16,6 +18,7 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 app.use('/api/user', userRoutes);
+app.use('/api/rooms', roomRoutes);
 
 // Protected route example
 app.get('/api/protected', authenticateToken, (req: Request, res: Response) => {
