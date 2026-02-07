@@ -1,9 +1,8 @@
-import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
-import authRoutes from './routes/authRoutes';
-import { authenticateToken } from './middleware/authMiddleware';
-
-dotenv.config();
+dotenv.config({ quiet: true });
+import express, { Request, Response } from 'express';
+import userRoutes from './routes/userRoutes';
+import { authenticateToken } from './middleware/userMiddleware';
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -16,7 +15,7 @@ app.get('/', (req: Request, res: Response) => {
   res.send('Whiteboard API is running');
 });
 
-app.use('/api/auth', authRoutes);
+app.use('/api/user', userRoutes);
 
 // Protected route example
 app.get('/api/protected', authenticateToken, (req: Request, res: Response) => {
