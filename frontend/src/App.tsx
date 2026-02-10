@@ -1,16 +1,25 @@
-// test comment
-
-
-// 1. Import your component
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
-import {AuthForm} from './components/AuthForm';
+import { LoginPage } from './pages/LoginPage';
+import { DashboardPage } from './pages/DashboardPage';
+import { ProtectedRoute } from './components/ProtectedRoute';
 
 function App() {
   return (
-    // 2. Render it inside the main div
-    <div className="app-shell">
-      <AuthForm/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <DashboardPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="*" element={<Navigate to="/login" replace />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

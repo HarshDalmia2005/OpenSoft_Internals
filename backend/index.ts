@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 dotenv.config({ quiet: true });
 
 import userRoutes from './routes/userRoutes';
@@ -11,6 +12,7 @@ const port = process.env.PORT || 5000;
 
 // Middleware
 app.use(express.json());
+app.use(cors());
 
 // Routes
 app.get('/', (req: Request, res: Response) => {
@@ -22,9 +24,9 @@ app.use('/api/rooms', roomRoutes);
 
 // Protected route example
 app.get('/api/protected', authenticateToken, (req: Request, res: Response) => {
-  res.json({ 
-    message: 'This is a protected route', 
-    user: req.user 
+  res.json({
+    message: 'This is a protected route',
+    user: req.user
   });
 });
 
